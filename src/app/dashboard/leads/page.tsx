@@ -13,7 +13,6 @@ import {
   Zap,
   Globe,
   Mail,
-  Linkedin,
   Building2,
   Users,
   X,
