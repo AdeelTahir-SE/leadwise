@@ -1,8 +1,8 @@
-# ProspectPilot — System Architecture
+# Leadwise — System Architecture
 
 ## 1. Overview
 
-ProspectPilot is a multi-agent lead generation system built on LangChain (LangGraph for orchestration), Next.js/TypeScript, and Supabase. A **Supervisor Agent** coordinates a team of specialized **Sub-Agents**, each responsible for one stage of the pipeline: research, qualification, enrichment, scoring, and outreach drafting. Agents communicate through a shared state object and persist intermediate results to Supabase, making the pipeline resumable, auditable, and horizontally scalable.
+Leadwise is a multi-agent lead generation system built on LangChain (LangGraph for orchestration), Next.js/TypeScript, and Supabase. A **Supervisor Agent** coordinates a team of specialized **Sub-Agents**, each responsible for one stage of the pipeline: research, qualification, enrichment, scoring, and outreach drafting. Agents communicate through a shared state object and persist intermediate results to Supabase, making the pipeline resumable, auditable, and horizontally scalable.
 
 Design goals:
 - **Accuracy over speed** — every claim a sub-agent makes is traceable to a source (URL, API response, or document) before it's trusted downstream.
