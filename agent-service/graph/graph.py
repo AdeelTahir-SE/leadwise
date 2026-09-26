@@ -12,8 +12,8 @@ except ImportError:
     StateGraph = object  # type: ignore[misc,assignment]
     END = "__end__"  # type: ignore[assignment]
 
-from graph.state import LeadState
-from graph.checkpointer import get_checkpointer
+from .state import LeadState
+from .checkpointer import get_checkpointer
 from agents.research import ResearchAgent
 from agents.qualification import QualificationAgent
 from agents.enrichment import EnrichmentAgent
