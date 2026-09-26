@@ -7,7 +7,7 @@ Research -> Qualification -> Enrichment -> Scoring -> Outreach
 Includes conditional routing, retry wrappers, budget guards, and DB observability.
 """
 try:
-    from langgraph.graph import StateGraph, END
+    from langgraph.graph import StateGraph, END  # type: ignore[import-not-found,import-untyped]  # pyright: ignore[reportMissingImports]
 except ImportError:
     StateGraph = object  # type: ignore[misc,assignment]
     END = "__end__"  # type: ignore[assignment]

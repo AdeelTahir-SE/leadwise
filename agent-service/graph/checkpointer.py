@@ -11,7 +11,10 @@ Member 3 left the PostgresSaver stub here with the comment:
   "Member 2 (Backend) will swap this out for PostgresSaver once Supabase is setup."
 """
 import logging
-from langgraph.checkpoint.memory import MemorySaver
+try:
+    from langgraph.checkpoint.memory import MemorySaver  # type: ignore[import-not-found,import-untyped]  # pyright: ignore[reportMissingImports]
+except ImportError:
+    MemorySaver = object  # type: ignore[misc,assignment]
 
 logger = logging.getLogger(__name__)
 
