@@ -1,37 +1,36 @@
+"""
+agent-service/graph/graph.py
+
+StateGraph definition linking the 5 sub-agents:
+Research -> Qualification -> Enrichment -> Scoring -> Outreach
+
+Includes conditional routing, retry wrappers, budget guards, and DB observability.
+"""
+import os
+import sys
+
+# Ensure agent-service directory is in sys.path for IDE & module resolution
+_current_dir = os.path.dirname(os.path.abspath(__file__))
+_agent_service_dir = os.path.dirname(_current_dir)
+if _agent_service_dir not in sys.path:
+    sys.path.insert(0, _agent_service_dir)
+
 try:
     from langgraph.graph import StateGraph, END
 except ImportError:
     StateGraph = object  # type: ignore[misc,assignment]
     END = "__end__"  # type: ignore[assignment]
 
-try:
-    from .state import LeadState
-    from .checkpointer import get_checkpointer
-except ImportError:
-    from graph.state import LeadState  # type: ignore[no-redef]
-    from graph.checkpointer import get_checkpointer  # type: ignore[no-redef]
-
-try:
-    from agents.research import ResearchAgent
-    from agents.qualification import QualificationAgent
-    from agents.enrichment import EnrichmentAgent
-    from agents.scoring import ScoringAgent
-    from agents.outreach import OutreachAgent
-except ImportError:
-    from ..agents.research import ResearchAgent  # type: ignore[no-redef]
-    from ..agents.qualification import QualificationAgent  # type: ignore[no-redef]
-    from ..agents.enrichment import EnrichmentAgent  # type: ignore[no-redef]
-    from ..agents.scoring import ScoringAgent  # type: ignore[no-redef]
-    from ..agents.outreach import OutreachAgent  # type: ignore[no-redef]
-
-try:
-    from reliability.retry import with_retry
-    from supervisor.budget import budget_guard
-    from db.event_logger import observe_agent_step
-except ImportError:
-    from ..reliability.retry import with_retry  # type: ignore[no-redef]
-    from ..supervisor.budget import budget_guard  # type: ignore[no-redef]
-    from ..db.event_logger import observe_agent_step  # type: ignore[no-redef]
+from graph.state import LeadState
+from graph.checkpointer import get_checkpointer
+from agents.research import ResearchAgent
+from agents.qualification import QualificationAgent
+from agents.enrichment import EnrichmentAgent
+from agents.scoring import ScoringAgent
+from agents.outreach import OutreachAgent
+from reliability.retry import with_retry
+from supervisor.budget import budget_guard
+from db.event_logger import observe_agent_step
 
 research_agent     = ResearchAgent()
 qualification_agent = QualificationAgent()

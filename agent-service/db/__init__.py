@@ -1,8 +1,14 @@
 """
-agent-service/db/__init__.py
-
-Database, checkpointer, and observability module for Leadwise AI service.
+agent-service/db package.
 """
+import os
+import sys
+
+_current_dir = os.path.dirname(os.path.abspath(__file__))
+_agent_service_dir = os.path.dirname(_current_dir)
+if _agent_service_dir not in sys.path:
+    sys.path.insert(0, _agent_service_dir)
+
 from .supabase_client import get_supabase_client
 from .event_logger import (
     log_lead_event,
