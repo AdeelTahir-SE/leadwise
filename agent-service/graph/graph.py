@@ -21,16 +21,31 @@ except ImportError:
     StateGraph = object  # type: ignore[misc,assignment]
     END = "__end__"  # type: ignore[assignment]
 
-from graph.state import LeadState
-from graph.checkpointer import get_checkpointer
-from agents.research import ResearchAgent
-from agents.qualification import QualificationAgent
-from agents.enrichment import EnrichmentAgent
-from agents.scoring import ScoringAgent
-from agents.outreach import OutreachAgent
-from reliability.retry import with_retry
-from supervisor.budget import budget_guard
-from db.event_logger import observe_agent_step
+try:
+    from .state import LeadState
+    from .checkpointer import get_checkpointer
+except (ImportError, ValueError):
+    from graph.state import LeadState  # type: ignore[no-redef]
+    from graph.checkpointer import get_checkpointer  # type: ignore[no-redef]
+
+try:
+    from ..agents.research import ResearchAgent
+    from ..agents.qualification import QualificationAgent
+    from ..agents.enrichment import EnrichmentAgent
+    from ..agents.scoring import ScoringAgent
+    from ..agents.outreach import OutreachAgent
+    from ..reliability.retry import with_retry
+    from ..supervisor.budget import budget_guard
+    from ..db.event_logger import observe_agent_step
+except (ImportError, ValueError):
+    from agents.research import ResearchAgent  # type: ignore[no-redef]
+    from agents.qualification import QualificationAgent  # type: ignore[no-redef]
+    from agents.enrichment import EnrichmentAgent  # type: ignore[no-redef]
+    from agents.scoring import ScoringAgent  # type: ignore[no-redef]
+    from agents.outreach import OutreachAgent  # type: ignore[no-redef]
+    from reliability.retry import with_retry  # type: ignore[no-redef]
+    from supervisor.budget import budget_guard  # type: ignore[no-redef]
+    from db.event_logger import observe_agent_step  # type: ignore[no-redef]
 
 research_agent     = ResearchAgent()
 qualification_agent = QualificationAgent()

@@ -1,5 +1,9 @@
 from .base import BaseAgent
-from graph.state import LeadState, OutreachDraft
+
+try:
+    from ..graph.state import LeadState, OutreachDraft
+except (ImportError, ValueError):
+    from graph.state import LeadState, OutreachDraft  # type: ignore[no-redef]
 
 class OutreachAgent(BaseAgent):
     name = "outreach"

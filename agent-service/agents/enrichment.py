@@ -1,5 +1,9 @@
 from .base import BaseAgent
-from graph.state import LeadState, EnrichedLead
+
+try:
+    from ..graph.state import LeadState, EnrichedLead
+except (ImportError, ValueError):
+    from graph.state import LeadState, EnrichedLead  # type: ignore[no-redef]
 
 class EnrichmentAgent(BaseAgent):
     name = "enrichment"
