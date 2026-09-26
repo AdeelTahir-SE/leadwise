@@ -42,8 +42,8 @@ def get_checkpointer():
         try:
             # langgraph-checkpoint-postgres must be installed.
             # See requirements.txt — it's listed as a dependency.
-            from langgraph.checkpoint.postgres import PostgresSaver
-            import psycopg2
+            from langgraph.checkpoint.postgres import PostgresSaver  # type: ignore[import-not-found,import-untyped]  # pyright: ignore[reportMissingImports]
+            import psycopg2  # type: ignore[import-not-found,import-untyped]  # pyright: ignore[reportMissingImports]
 
             conn = psycopg2.connect(
                 DATABASE_URL,

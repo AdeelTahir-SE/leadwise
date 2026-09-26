@@ -39,7 +39,7 @@ def get_supabase_client():
         return None
 
     try:
-        from supabase import create_client  # type: ignore[import]
+        from supabase import create_client  # type: ignore[import-not-found,import-untyped]  # pyright: ignore[reportMissingImports]
         _client = create_client(SUPABASE_URL, SUPABASE_KEY)
         logger.info("[supabase_client] Supabase client initialised")
     except Exception as exc:  # noqa: BLE001
