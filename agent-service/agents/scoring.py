@@ -1,9 +1,5 @@
 from .base import BaseAgent
-
-try:
-    from ..graph.state import LeadState, ScoreResult
-except (ImportError, ValueError):
-    from graph.state import LeadState, ScoreResult  # type: ignore[no-redef]
+from graph.state import LeadState, ScoreResult
 
 class ScoringAgent(BaseAgent):
     name = "scoring"

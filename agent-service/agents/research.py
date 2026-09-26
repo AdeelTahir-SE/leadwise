@@ -1,9 +1,5 @@
 from .base import BaseAgent
-
-try:
-    from ..graph.state import LeadState, LeadCandidate
-except (ImportError, ValueError):
-    from graph.state import LeadState, LeadCandidate  # type: ignore[no-redef]
+from graph.state import LeadState, LeadCandidate
 
 class ResearchAgent(BaseAgent):
     name = "research"

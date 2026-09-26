@@ -1,9 +1,5 @@
 from abc import ABC, abstractmethod
-
-try:
-    from ..graph.state import LeadState
-except (ImportError, ValueError):
-    from graph.state import LeadState  # type: ignore[no-redef]
+from graph.state import LeadState
 
 class BaseAgent(ABC):
     name: str
