@@ -8,3 +8,8 @@ langchain-community
 pydantic
 supabase
 psycopg2-binary
+tavily-python
+httpx
+beautifulsoup4
+pytest
+pytest-asyncio
